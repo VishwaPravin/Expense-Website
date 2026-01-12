@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Family Expense Tracker</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="app-header">
+    <div>
+      <h1>Family Expense Tracker</h1>
+      <p class="subtitle">Track income, expenses, and stay on budget</p>
+    </div>
+    <div class="actions">
+      <button id="download-weekly" class="btn secondary">Download Weekly PDF</button>
+      <button id="download-monthly" class="btn secondary">Download Monthly PDF</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="summary">
+      <div class="card income">
+        <p class="label">Total Income</p>
+        <p id="total-income" class="value">$0.00</p>
+      </div>
+      <div class="card expense">
+        <p class="label">Total Expense</p>
+        <p id="total-expense" class="value">$0.00</p>
+      </div>
+      <div class="card balance">
+        <p class="label">Balance</p>
+        <p id="balance" class="value">$0.00</p>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-header">
+        <h2>Add Transaction</h2>
+      </div>
+      <form id="transaction-form" class="form-grid">
+        <label>
+          Type
+          <select id="type" required>
+            <option value="income">Income</option>
+            <option value="expense">Expense</option>
+          </select>
+        </label>
+        <label>
+          Amount
+          <input id="amount" type="number" min="0.01" step="0.01" placeholder="0.00" required>
+        </label>
+        <label>
+          Description
+          <input id="description" type="text" placeholder="e.g., Salary or Groceries" required>
+        </label>
+        <label>
+          Category (optional)
+          <input id="category" type="text" placeholder="e.g., Food, Rent">
+        </label>
+        <label>
+          Date
+          <input id="date" type="date" required>
+        </label>
+        <div class="form-actions">
+          <button type="submit" class="btn primary">Add</button>
+        </div>
+      </form>
+      <p id="form-error" class="error-message" aria-live="polite"></p>
+    </section>
+
+    <section class="panel">
+      <div class="panel-header">
+        <h2>Transactions</h2>
+        <div class="filters">
+          <button class="btn chip active" data-filter="all">All</button>
+          <button class="btn chip" data-filter="income">Income</button>
+          <button class="btn chip" data-filter="expense">Expense</button>
+        </div>
+      </div>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Description</th>
+              <th>Category</th>
+              <th>Type</th>
+              <th class="right">Amount</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="transactions-body">
+            <tr id="empty-state">
+              <td colspan="6" class="empty">No transactions yet. Add your first one above.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
