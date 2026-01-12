@@ -194,7 +194,7 @@ function renderAll() {
 function formatCurrency(value) {
   return value.toLocaleString(undefined, {
     style: "currency",
-    currency: "USD",
+    currency: "INR",
     minimumFractionDigits: 2,
   });
 }
@@ -349,3 +349,4 @@ function downloadReport(range) {
 }
 
 document.addEventListener("DOMContentLoaded", init);
+
